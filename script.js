@@ -1,29 +1,69 @@
-// IntersectionObserver reveal
-const observer = new IntersectionObserver(
-  (entries, observerInstance) => {
-    entries.forEach((entry, index) => {
-      if (!entry.isIntersecting) return;
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
-      entry.target.style.animationDelay = `${index * 0.07}s`;
-      entry.target.classList.add("rv");
+// IntersectionObserver reveal animation
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observerInstance) => {
+      entries.forEach((entry, index) => {
+        if (!entry.isIntersecting) return;
 
-      observerInstance.unobserve(entry.target);
+        entry.target.style.animationDelay = `${index * 0.06}s`;
+        entry.target.classList.add("rv");
+        entry.target.style.opacity = "";
+
+        observerInstance.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -4% 0px",
+    },
+  );
+
+  document
+    .querySelectorAll(
+      "section > .sec-head, .about > *, .build-item, .proj, .skill, .beyond-item, .contact > *",
+    )
+    .forEach((element) => {
+      element.style.opacity = "0";
+      revealObserver.observe(element);
     });
-  },
-  {
-    threshold: 0.1,
-    rootMargin: "0px 0px -6% 0px",
-  },
-);
+}
 
-document
-  .querySelectorAll(
-    "section > .sec-head, .about > *, .build-item, .proj, .skill, .beyond-item, .contact > *",
-  )
-  .forEach((element) => {
-    element.style.opacity = "0";
-    observer.observe(element);
-  });
+// ScrollSpy navigation indicator
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".rail .vert a, .mobile-menu a");
+
+if ("IntersectionObserver" in window && sections.length > 0) {
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (href === `#${id}`) {
+              link.classList.add("active");
+              link.setAttribute("aria-current", "page");
+            } else if (href && href.startsWith("#")) {
+              link.classList.remove("active");
+              link.removeAttribute("aria-current");
+            }
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "-20% 0px -50% 0px",
+    },
+  );
+
+  sections.forEach((section) => spyObserver.observe(section));
+}
 
 // Mobile navigation toggle
 const mobileToggle = document.querySelector(".mobile-toggle");
@@ -41,5 +81,13 @@ if (mobileToggle && mobileMenu) {
       mobileToggle.setAttribute("aria-expanded", "false");
       mobileMenu.classList.remove("open");
     });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
+      mobileToggle.setAttribute("aria-expanded", "false");
+      mobileMenu.classList.remove("open");
+      mobileToggle.focus();
+    }
   });
 }
