@@ -35,7 +35,9 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
 
 // ScrollSpy navigation indicator
 const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".rail .vert a, .mobile-menu a");
+const navLinks = document.querySelectorAll(
+  ".rail .vert a, .rail .dot, .mobile-menu a",
+);
 
 if ("IntersectionObserver" in window && sections.length > 0) {
   const spyObserver = new IntersectionObserver(
