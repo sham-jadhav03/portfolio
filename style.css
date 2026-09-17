@@ -152,6 +152,109 @@ a:focus-visible {
 }
 
 /* ------------------------------
+       Mobile navigation
+    ------------------------------ */
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px clamp(20px, 5vw, 40px);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.mobile-mark {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.mobile-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.mobile-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.mobile-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.mobile-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.mobile-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mobile-menu {
+  display: grid;
+  position: fixed;
+  top: 49px;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition:
+    max-height 0.3s ease,
+    visibility 0.3s;
+}
+
+.mobile-menu.open {
+  max-height: 320px;
+  visibility: visible;
+}
+
+.mobile-menu a {
+  padding: 8px 0;
+  text-align: center;
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mobile-menu a:not(:last-child) {
+  border-bottom: 1px solid var(--rule);
+}
+
+.mobile-menu a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .mobile-nav {
+    display: flex;
+  }
+
+  .wrap {
+    padding-top: 49px;
+  }
+}
+
+/* ------------------------------
        Reveal animation
     ------------------------------ */
 
@@ -547,6 +650,65 @@ section {
 
 .proj:hover::after {
   width: 100%;
+}
+
+/* Featured projects get extra structure */
+
+.proj--featured .row {
+  border-left: 1px solid var(--rule);
+  padding-left: 18px;
+}
+
+.proj--featured h3 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.proj--featured {
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.proj--flagship .row {
+  border-left-color: var(--accent);
+}
+
+.proj--flagship .proj-visual-placeholder {
+  min-height: 140px;
+}
+
+/* Project visual placeholder (swap for real screenshots later) */
+
+.proj-visual {
+  grid-column: 2 / -1;
+  margin-top: 18px;
+}
+
+.proj-visual-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  background: var(--card);
+}
+
+.proj-visual-placeholder .mono {
+  font-size: 0.66rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .proj-visual-placeholder {
+    background: #121110;
+  }
+}
+
+.proj-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
 }
 
 @media (max-width: 560px) {

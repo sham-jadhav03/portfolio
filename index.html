@@ -13,18 +13,22 @@
     <meta name="author" content="Ghansham Jadhav">
     <meta name="theme-color" content="#f7f4ed">
 
+    <!-- Replace DOMAIN with your actual deployed domain -->
+    <link rel="canonical" href="https://DOMAIN/">
+
     <meta property="og:title" content="Ghansham Jadhav — Full-stack Developer">
     <meta property="og:description"
         content="Full-stack developer focused on backend systems, AI-powered applications, and practical system design.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-domain.com/">
-    <!-- Add your deployed OG image here -->
-    <!-- <meta property="og:image" content="https://your-domain.com/og-image.png"> -->
+    <meta property="og:url" content="https://DOMAIN/">
+    <meta property="og:image" content="https://DOMAIN/og-image.png">
+    <meta property="og:locale" content="en_IN">
 
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sham_jadhav18">
+    <meta name="twitter:creator" content="@sham_jadhav18">
 
-    <!-- Replace with your actual deployed domain -->
-    <!-- <link rel="canonical" href="https://your-domain.com/"> -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +38,42 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ghansham Jadhav",
+        "jobTitle": "Full-stack Developer",
+        "url": "https://DOMAIN/",
+        "sameAs": [
+            "https://github.com/sham-jadhav03",
+            "https://www.linkedin.com/in/ghansham-jadhav-98112128a/",
+            "https://x.com/sham_jadhav18"
+        ]
+    }
+    </script>
 </head>
 
 <body>
 
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <span class="mobile-mark">GJ</span>
+        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about">About</a>
+            <a href="#build">Build</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Toolkit</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Desktop Navigation -->
     <nav class="rail" aria-label="Primary navigation">
         <span class="mark">GJ</span>
 
@@ -70,8 +106,9 @@
             </h1>
 
             <p class="lede rv" style="animation-delay:.3s">
-                I build full-stack applications with a focus on backend systems,
-                AI-powered workflows, and practical system design.
+                I build full-stack applications, backend systems, and AI-powered
+                products — from RAG pipelines and agent workflows to real-time
+                web platforms.
             </p>
 
             <div class="meta mono rv" style="animation-delay:.4s">
@@ -84,8 +121,7 @@
             </div>
 
             <div class="hero-actions rv" style="animation-delay:.48s">
-                <!-- Replace resume.pdf with your actual deployed resume path -->
-                <a class="action primary" href="./resume.pdf" target="_blank" rel="noopener">
+                <a class="action primary" href="./resume.pdf" target="_blank" rel="noopener noreferrer">
                     View Resume ↗
                 </a>
 
@@ -119,14 +155,14 @@
                     <p>
                         I'm a full-stack developer focused on backend systems and
                         AI-powered applications. I work primarily with TypeScript,
-                        Node.js, React/Next.js and Python, and I enjoy turning complex
+                        Node.js, React/Next.js, and Python, and I enjoy turning complex
                         workflows into reliable services.
                     </p>
 
                     <p>
                         Recently I've been building RAG and agent systems with LangGraph,
-                        vector databases and asynchronous processing, while continuing
-                        to deepen my systems and distributed-software fundamentals.
+                        vector databases, and asynchronous processing, while deepening my
+                        systems and distributed-software fundamentals.
                     </p>
                 </div>
 
@@ -135,7 +171,7 @@
                     <dt class="mono">Education</dt>
                     <dd>
                         B.E. Information Technology · 2023–2027<br>
-                        Government College of Engineering
+                        Government College of Engineering, Chhatrapati Sambhajinagar
                     </dd>
 
                     <dt class="mono">Current focus</dt>
@@ -248,9 +284,9 @@
             <p class="project-group-label mono">Featured</p>
 
 
-            <!-- RAG CHATBOT -->
+            <!-- RAG CHATBOT — FLAGSHIP -->
 
-            <article class="proj">
+            <article class="proj proj--featured proj--flagship">
 
                 <div class="row">
 
@@ -259,6 +295,12 @@
                     <h3>Enterprise RAG Knowledge Base</h3>
 
                     <span class="arrow" aria-hidden="true">↗</span>
+
+                    <div class="proj-visual">
+                        <div class="proj-visual-placeholder" aria-hidden="true">
+                            <span class="mono">RAG Pipeline</span>
+                        </div>
+                    </div>
 
                     <p class="desc">
                         An asynchronous enterprise knowledge-base system that turns
@@ -269,7 +311,6 @@
                     </p>
 
                     <div class="stack">
-                        <span class="tag live">Live Demo</span>
                         <span class="tag">Next.js</span>
                         <span class="tag">LangGraph</span>
                         <span class="tag">ChromaDB</span>
@@ -285,11 +326,6 @@
                             GitHub ↗
                         </a>
 
-                        <!-- Replace with your actual live URL -->
-                        <a href="https://your-rag-demo-url.com" target="_blank" rel="noopener noreferrer">
-                            Live Demo ↗
-                        </a>
-
                     </div>
 
                 </div>
@@ -299,7 +335,7 @@
 
             <!-- RESEARCH AI -->
 
-            <article class="proj">
+            <article class="proj proj--featured">
 
                 <div class="row">
 
@@ -309,10 +345,16 @@
 
                     <span class="arrow" aria-hidden="true">↗</span>
 
+                    <div class="proj-visual">
+                        <div class="proj-visual-placeholder" aria-hidden="true">
+                            <span class="mono">Search + Stream</span>
+                        </div>
+                    </div>
+
                     <p class="desc">
                         A full-stack AI answer engine that searches the live web,
                         streams responses through SSE, and attaches citations to
-                        retrieved sources. Also includes PDF document Q&A,
+                        retrieved sources. Includes PDF document Q&A,
                         multimodal queries, and persistent conversation memory.
                     </p>
 
@@ -341,7 +383,7 @@
 
             <!-- CODEX -->
 
-            <article class="proj">
+            <article class="proj proj--featured">
 
                 <div class="row">
 
@@ -351,11 +393,17 @@
 
                     <span class="arrow" aria-hidden="true">↗</span>
 
+                    <div class="proj-visual">
+                        <div class="proj-visual-placeholder" aria-hidden="true">
+                            <span class="mono">Collaborative IDE</span>
+                        </div>
+                    </div>
+
                     <p class="desc">
                         A browser-based collaborative coding environment with Gemini
                         code generation and WebContainers for running projects without
-                        a local development setup. Real-time collaboration is handled
-                        through Socket.io with Redis-backed session state.
+                        a local setup. Real-time collaboration through Socket.io
+                        with Redis-backed session state.
                     </p>
 
                     <div class="stack">
@@ -382,7 +430,7 @@
 
             <!-- SAAS BACKEND -->
 
-            <article class="proj">
+            <article class="proj proj--featured">
 
                 <div class="row">
 
@@ -391,6 +439,12 @@
                     <h3>Multi-Tenant SaaS Backend</h3>
 
                     <span class="arrow" aria-hidden="true">↗</span>
+
+                    <div class="proj-visual">
+                        <div class="proj-visual-placeholder" aria-hidden="true">
+                            <span class="mono">System Architecture</span>
+                        </div>
+                    </div>
 
                     <p class="desc">
                         A production-style backend architecture with tenant isolation,
@@ -606,7 +660,7 @@
                     <h3>Co-Head · HackSlash Coding Club</h3>
 
                     <p>
-                        Helped lead a 15-member coding club and organized a
+                        Led a 15-member coding club and organized a
                         national-level hackathon with 100+ participants.
                     </p>
 
@@ -667,7 +721,7 @@
                     LeetCode
                 </a>
 
-                <a href="./resume.pdf">
+                <a href="./resume.pdf" target="_blank" rel="noopener noreferrer">
                     Resume
                 </a>
 
@@ -692,6 +746,7 @@
 
 
     <script>
+        // IntersectionObserver reveal
         const observer = new IntersectionObserver(
             (entries, observerInstance) => {
                 entries.forEach((entry, index) => {
@@ -717,6 +772,25 @@
                 element.style.opacity = "0";
                 observer.observe(element);
             });
+
+        // Mobile navigation toggle
+        const mobileToggle = document.querySelector(".mobile-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener("click", () => {
+                const expanded = mobileToggle.getAttribute("aria-expanded") === "true";
+                mobileToggle.setAttribute("aria-expanded", String(!expanded));
+                mobileMenu.classList.toggle("open");
+            });
+
+            mobileMenu.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    mobileToggle.setAttribute("aria-expanded", "false");
+                    mobileMenu.classList.remove("open");
+                });
+            });
+        }
     </script>
 
 </body>
