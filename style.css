@@ -343,6 +343,20 @@ a:focus-visible {
   }
 }
 
+/* Visually hidden — screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ------------------------------
        Hero
     ------------------------------ */
@@ -358,13 +372,19 @@ a:focus-visible {
 
 .hero-sketch {
   position: absolute;
-  right: 0;
-  top: 15%;
-  width: min(300px, 28vw);
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  background: var(--card);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.5;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.hero > :not(.hero-sketch) {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 760px) {
@@ -463,12 +483,16 @@ h1 em {
     background 0.25s,
     border-color 0.25s,
     color 0.25s,
+    box-shadow 0.25s,
     transform 0.25s;
 }
 
-.action:hover {
+.action:hover,
+.action:focus-visible {
   color: var(--accent);
   border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: 0 5px 16px -10px currentColor;
   transform: translateY(-2px);
 }
 
@@ -1007,6 +1031,23 @@ section {
   color: var(--ink-soft);
   font-size: 0.94em;
   font-weight: 200;
+}
+
+.beyond-item.rv {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: beyond-rise 0.9s cubic-bezier(0.2, 0.7, 0.25, 1) forwards;
+}
+
+@keyframes beyond-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 640px) {

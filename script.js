@@ -24,7 +24,7 @@ if (!prefersReducedMotion && "IntersectionObserver" in window) {
   );
 
   document
-    .querySelectorAll(".about > *, .build-item, .proj, .skill, .contact > *")
+    .querySelectorAll(".about > *, .build-item, .proj, .skill, .contact > *, .beyond-item")
     .forEach((element) => {
       element.style.opacity = "0";
       revealObserver.observe(element);
@@ -156,8 +156,7 @@ const TERMINAL_SNIPPETS = {
 };
 
 function buildTerminal(proj) {
-  const numberEl = proj.querySelector(".row > .mono");
-  const key = (numberEl && numberEl.textContent.trim()) || "";
+  const key = proj.dataset.term || "";
   const lines = TERMINAL_SNIPPETS[key] || TERMINAL_SNIPPETS._fallback;
   const desc = proj.querySelector(".desc");
   if (!desc) return;
@@ -225,7 +224,7 @@ document.querySelectorAll(".proj").forEach(buildTerminal);
   }
 
   function seed() {
-    const count = Math.max(30, Math.round((width * height) / 1300));
+    const count = Math.min(120, Math.max(30, Math.round((width * height) / 1300)));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
