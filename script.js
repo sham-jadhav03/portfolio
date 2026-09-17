@@ -506,3 +506,20 @@ if (mobileToggle && mobileMenu) {
       node.addEventListener("mouseenter", click);
     });
 })();
+
+// Dynamic scroll progress indicator for desktop rail
+(function () {
+  const rail = document.querySelector(".rail");
+  if (!rail) return;
+
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    rail.style.setProperty("--scroll-progress", `${progress.toFixed(1)}%`);
+  }
+
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+  updateScrollProgress();
+})();
