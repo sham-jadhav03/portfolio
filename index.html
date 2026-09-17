@@ -2,794 +2,723 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ghansham Jadhav — Full-stack Developer</title>
-  <meta name="description"
-    content="Full-stack developer focused on backend systems, clean APIs, and applied AI. Building RAG pipelines, multi-tenant services, and agent tooling.">
-  <meta property="og:title" content="Ghansham Jadhav — Full-stack Developer">
-  <meta property="og:description" content="Backend systems, clean APIs, and applied AI.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,200;6..72,400&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --paper: #f7f4ed;
-      --ink: #17150f;
-      --ink-soft: #5d584c;
-      --rule: #d8d2c4;
-      --accent: #b3451f;
-      --card: #fffdf8;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --paper: #100f0e;
-        --ink: #f0ece2;
-        --ink-soft: #9b958a;
-        --rule: #2e2b26;
-        --accent: #e8703f;
-        --card: #181716;
-      }
-    }
+    <title>Ghansham Jadhav — Full-stack Developer</title>
 
-    :root[data-theme="dark"] {
-      --paper: #100f0e;
-      --ink: #f0ece2;
-      --ink-soft: #9b958a;
-      --rule: #2e2b26;
-      --accent: #e8703f;
-      --card: #181716;
-    }
+    <meta name="description"
+        content="Ghansham Jadhav is a full-stack developer focused on backend systems, AI-powered applications, RAG pipelines, and practical system design.">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
+    <meta name="author" content="Ghansham Jadhav">
+    <meta name="theme-color" content="#f7f4ed">
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%
-    }
+    <meta property="og:title" content="Ghansham Jadhav — Full-stack Developer">
+    <meta property="og:description"
+        content="Full-stack developer focused on backend systems, AI-powered applications, and practical system design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <!-- Add your deployed OG image here -->
+    <!-- <meta property="og:image" content="https://your-domain.com/og-image.png"> -->
 
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Newsreader", Georgia, "Times New Roman", serif;
-      font-size: clamp(16px, 1.05vw + 13px, 19px);
-      line-height: 1.65;
-      overflow-x: hidden;
-      position: relative;
-    }
+    <meta name="twitter:card" content="summary_large_image">
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9;
-      opacity: .5;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
+    <!-- Replace with your actual deployed domain -->
+    <!-- <link rel="canonical" href="https://your-domain.com/"> -->
 
-    @media (prefers-color-scheme:dark) {
-      body::before {
-        mix-blend-mode: screen;
-        opacity: .2
-      }
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    a {
-      color: inherit;
-      text-decoration: none
-    }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,200;6..72,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 
-    .mono {
-      font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
-      font-size: .66rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--ink-soft)
-    }
-
-    .wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 64px)
-    }
-
-    /* rail */
-    .rail {
-      position: fixed;
-      left: 26px;
-      top: 0;
-      height: 100vh;
-      width: 52px;
-      z-index: 8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 28px 0;
-      border-right: 1px solid var(--rule)
-    }
-
-    .rail .mark {
-      font-family: "Instrument Serif", serif;
-      font-size: 1.4rem;
-      line-height: 1
-    }
-
-    .rail .vert {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg)
-    }
-
-    .rail .vert a {
-      display: block;
-      margin: 14px 0;
-      transition: color .25s
-    }
-
-    .rail .vert a:hover {
-      color: var(--accent)
-    }
-
-    .rail .dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent)
-    }
-
-    @media(max-width:900px) {
-      .rail {
-        display: none
-      }
-    }
-
-    @media(min-width:901px) {
-      .wrap {
-        padding-left: 120px
-      }
-    }
-
-    .rv {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: rise .9s cubic-bezier(.2, .7, .25, 1) forwards
-    }
-
-    @keyframes rise {
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-      .rv {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important
-      }
-    }
-
-    /* hero */
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 96px 0 56px
-    }
-
-    .hero .eyebrow {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 26px
-    }
-
-    .hero .eyebrow::after {
-      content: "";
-      height: 1px;
-      flex: 1;
-      max-width: 200px;
-      background: var(--rule)
-    }
-
-    h1 {
-      font-family: "Instrument Serif", serif;
-      font-weight: 400;
-      font-size: clamp(3.2rem, 11.5vw, 9rem);
-      line-height: .87;
-      letter-spacing: -.02em
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent)
-    }
-
-    .lede {
-      max-width: 38ch;
-      margin-top: 34px;
-      font-size: 1.12em;
-      font-weight: 200;
-      color: var(--ink-soft)
-    }
-
-    .hero .meta {
-      margin-top: 48px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 28px;
-      align-items: center
-    }
-
-    .avail {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 0 var(--accent);
-      animation: pulse 2.4s infinite
-    }
-
-    @keyframes pulse {
-      70% {
-        box-shadow: 0 0 0 9px transparent
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 transparent
-      }
-    }
-
-    section {
-      padding: clamp(60px, 9vh, 104px) 0
-    }
-
-    .sec-head {
-      display: flex;
-      align-items: baseline;
-      gap: 18px;
-      border-top: 1px solid var(--rule);
-      padding-top: 18px;
-      margin-bottom: 50px
-    }
-
-    .sec-head h2 {
-      font-family: "Instrument Serif", serif;
-      font-weight: 400;
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      letter-spacing: -.01em;
-      line-height: 1.1
-    }
-
-    /* about */
-    .about {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: clamp(28px, 6vw, 72px);
-      align-items: start
-    }
-
-    .about p {
-      font-weight: 200;
-      font-size: 1.08em
-    }
-
-    .about p+p {
-      margin-top: 1.05em
-    }
-
-    .facts {
-      border-left: 1px solid var(--rule);
-      padding-left: 26px
-    }
-
-    .facts dt {
-      margin-top: 20px
-    }
-
-    .facts dt:first-child {
-      margin-top: 0
-    }
-
-    .facts dd {
-      font-size: .96em;
-      margin-top: 4px
-    }
-
-    .facts a {
-      border-bottom: 1px solid var(--rule);
-      transition: border-color .25s, color .25s
-    }
-
-    .facts a:hover {
-      color: var(--accent);
-      border-color: var(--accent)
-    }
-
-    @media(max-width:760px) {
-      .about {
-        grid-template-columns: 1fr
-      }
-
-      .facts {
-        border-left: 0;
-        padding-left: 0;
-        border-top: 1px solid var(--rule);
-        padding-top: 24px
-      }
-    }
-
-    /* projects */
-    .proj {
-      display: block;
-      border-top: 1px solid var(--rule);
-      padding: 26px 0;
-      position: relative;
-      overflow: hidden;
-      transition: padding-left .45s cubic-bezier(.2, .7, .25, 1)
-    }
-
-    .proj:last-of-type {
-      border-bottom: 1px solid var(--rule)
-    }
-
-    .proj .row {
-      display: grid;
-      grid-template-columns: 46px 1fr auto;
-      gap: 20px;
-      align-items: baseline
-    }
-
-    .proj h3 {
-      font-family: "Instrument Serif", serif;
-      font-weight: 400;
-      font-size: clamp(1.45rem, 3.4vw, 2.1rem);
-      line-height: 1.1;
-      transition: color .3s
-    }
-
-    .proj .desc {
-      grid-column: 2/-1;
-      max-width: 62ch;
-      margin-top: 10px;
-      font-weight: 200;
-      color: var(--ink-soft);
-      font-size: .98em
-    }
-
-    .proj .stack {
-      grid-column: 2/-1;
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center
-    }
-
-    .proj .arrow {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 1rem;
-      color: var(--ink-soft);
-      transition: transform .4s, color .3s
-    }
-
-    .proj:hover {
-      padding-left: 16px
-    }
-
-    .proj:hover h3 {
-      color: var(--accent)
-    }
-
-    .proj:hover .arrow {
-      transform: translate(6px, -6px);
-      color: var(--accent)
-    }
-
-    .proj::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      height: 1px;
-      width: 0;
-      background: var(--accent);
-      transition: width .55s cubic-bezier(.2, .7, .25, 1)
-    }
-
-    .proj:hover::after {
-      width: 100%
-    }
-
-    @media(max-width:560px) {
-      .proj .row {
-        grid-template-columns: 34px 1fr auto;
-        gap: 12px
-      }
-    }
-
-    .tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: .62rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      border: 1px solid var(--rule);
-      border-radius: 100px;
-      padding: 4px 11px;
-      color: var(--ink-soft)
-    }
-
-    .tag.live {
-      border-color: var(--accent);
-      color: var(--accent)
-    }
-
-    /* skills */
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule)
-    }
-
-    .skill {
-      background: var(--card);
-      padding: 26px 24px
-    }
-
-    .skill h4 {
-      font-family: "Instrument Serif", serif;
-      font-weight: 400;
-      font-size: 1.25rem;
-      margin-bottom: 14px
-    }
-
-    .skill ul {
-      list-style: none;
-      font-weight: 200;
-      font-size: .97em
-    }
-
-    .skill li {
-      padding: 3px 0;
-      display: flex;
-      gap: 10px;
-      align-items: baseline
-    }
-
-    .skill li::before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      flex: none;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: .65
-    }
-
-    /* contact */
-    .contact {
-      text-align: center;
-      padding-bottom: clamp(60px, 10vh, 110px)
-    }
-
-    .contact .big {
-      font-family: "Instrument Serif", serif;
-      font-size: clamp(1.6rem, 6.2vw, 4.4rem);
-      line-height: 1.05;
-      display: inline-block;
-      position: relative;
-      letter-spacing: -.02em;
-      word-break: break-word
-    }
-
-    .contact .big::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: .06em;
-      height: 2px;
-      width: 100%;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .5s cubic-bezier(.2, .7, .25, 1)
-    }
-
-    .contact .big:hover::after {
-      transform: scaleX(1)
-    }
-
-    .socials {
-      margin-top: 42px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px 30px
-    }
-
-    .socials a {
-      transition: color .25s
-    }
-
-    .socials a:hover {
-      color: var(--accent)
-    }
-
-    footer {
-      border-top: 1px solid var(--rule);
-      padding: 26px 0 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <nav class="rail" aria-label="Sections">
-    <span class="mark">GJ</span>
-    <div class="vert mono">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Toolkit</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <span class="dot"></span>
-  </nav>
+    <nav class="rail" aria-label="Primary navigation">
+        <span class="mark">GJ</span>
 
-  <main class="wrap">
-
-    <header class="hero">
-      <div class="eyebrow mono rv" style="animation-delay:.05s">Full-stack Developer — Portfolio</div>
-      <h1 class="rv" style="animation-delay:.15s">Ghansham<br><em>Jadhav</em></h1>
-      <p class="lede rv" style="animation-delay:.3s">
-        I build backend systems and applied-AI products — clean APIs, retrieval pipelines that
-        cite their sources, and services designed to survive their second year.
-      </p>
-      <div class="meta mono rv" style="animation-delay:.42s">
-        <span class="avail"><span class="pulse"></span>Open to opportunities</span>
-        <span>India</span>
-        <span>25 public repos</span>
-      </div>
-    </header>
-
-    <section id="about">
-      <div class="sec-head"><span class="mono">01</span>
-        <h2>About</h2>
-      </div>
-      <div class="about">
-        <div>
-          <p>I'm a full-stack developer who gravitates toward the backend — the part where correctness
-            actually matters. Clean APIs, system design, and practical uses of AI are what hold my
-            attention, and I learn by shipping real applications rather than reading about them.</p>
-          <p>Lately that means retrieval-augmented systems: LangGraph workflows, vector stores,
-            and the unglamorous work of making an LLM answer from documents instead of from
-            imagination. Alongside that, multi-tenant service architecture and the tooling that
-            makes coding agents less wasteful.</p>
+        <div class="vert mono">
+            <a href="#about">About</a>
+            <a href="#build">Build</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Toolkit</a>
+            <a href="#contact">Contact</a>
         </div>
-        <dl class="facts">
-          <dt class="mono">Currently</dt>
-          <dd>Building RAG &amp; agent systems, contributing to open source</dd>
-          <dt class="mono">Focus</dt>
-          <dd>TypeScript · Node · Python · LangGraph · System design</dd>
-          <dt class="mono">Also</dt>
-          <dd>Grinding DSA in Java — <a href="https://leetcode.com/u/sham_jadhav03/" target="_blank"
-              rel="noopener">LeetCode</a></dd>
-          <dt class="mono">Elsewhere</dt>
-          <dd>
-            <a href="https://github.com/sham-jadhav03" target="_blank" rel="noopener">GitHub</a> ·
-            <a href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/" target="_blank" rel="noopener">LinkedIn</a>
-            ·
-            <a href="https://x.com/sham_jadhav18" target="_blank" rel="noopener">X</a>
-          </dd>
-        </dl>
-      </div>
-    </section>
 
-    <section id="work">
-      <div class="sec-head"><span class="mono">02</span>
-        <h2>Selected work</h2>
-      </div>
+        <span class="dot" aria-hidden="true"></span>
+    </nav>
 
-      <a class="proj" href="https://github.com/sham-jadhav03/RAG-ChatBot" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">001</span>
-          <h3>Enterprise RAG Knowledge Base</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">Turns siloed PDF documentation — HR policies, handbooks, SOPs — into a
-            conversational knowledge base that answers with verifiable page citations. A two-node
-            LangGraph workflow handles retrieve → generate; a collection-per-document strategy in
-            ChromaDB gives zero cross-document leakage and instant deletes. JWT and layered RBAC
-            keep knowledge-base admins and employees strictly apart.</p>
-          <div class="stack">
-            <span class="tag live">Live demo</span>
-            <span class="tag">Next.js</span><span class="tag">LangGraph</span><span class="tag">ChromaDB</span>
-            <span class="tag">Python</span><span class="tag">Redis</span><span class="tag">MongoDB</span>
-          </div>
-        </div>
-      </a>
+    <main class="wrap">
 
-      <a class="proj" href="https://github.com/sham-jadhav03/ReSearch-AI" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">002</span>
-          <h3>ReSearch AI</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">An answer engine that searches the live web instead of relying on training
-            data, streams its response token by token, and cites every source inline — so the claim
-            and its evidence arrive together.</p>
-          <div class="stack">
-            <span class="tag">MERN</span><span class="tag">LangChain</span>
-            <span class="tag">Gemini</span><span class="tag">Tavily</span>
-          </div>
-        </div>
-      </a>
+        <!-- ==============================
+         HERO
+    =============================== -->
 
-      <a class="proj" href="https://github.com/sham-jadhav03/Codex" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">003</span>
-          <h3>Codex — Browser IDE</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">A collaborative IDE where AI-generated code compiles and runs entirely in
-            the browser through WebContainers — no server-side sandbox to provision, secure, or pay for.</p>
-          <div class="stack">
-            <span class="tag">JavaScript</span><span class="tag">WebContainers</span>
-            <span class="tag">Gemini</span><span class="tag">Realtime</span>
-          </div>
-        </div>
-      </a>
+        <header class="hero">
 
-      <a class="proj" href="https://github.com/sham-jadhav03/Saas-Backend" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">004</span>
-          <h3>Multi-Tenant SaaS Backend</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">Production-shaped service architecture: tenant middleware resolves and
-            attaches a tenant to every request, RBAC gates what it can touch, and feature modules
-            stay isolated behind their own controller / service / repository layers. Dockerised with
-            separate dev and prod compose stacks.</p>
-          <div class="stack">
-            <span class="tag">TypeScript</span><span class="tag">Express</span>
-            <span class="tag">MongoDB</span><span class="tag">Docker</span><span class="tag">JWT</span>
-          </div>
-        </div>
-      </a>
+            <div class="eyebrow mono rv" style="animation-delay:.05s">
+                Full-stack Developer · Backend & AI Systems
+            </div>
 
-      <a class="proj" href="https://sham-jadhav03.github.io/Image-Editor/" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">005</span>
-          <h3>Canvas Image Editor</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">Real-time image processing on the Canvas API — cinematic presets,
-            optimisation tools, and browser-based video recording. No framework, no dependencies,
-            no build step: vanilla HTML, CSS and JavaScript.</p>
-          <div class="stack">
-            <span class="tag live">Live</span>
-            <span class="tag">Canvas API</span><span class="tag">Vanilla JS</span><span class="tag">CSS3</span>
-          </div>
-        </div>
-      </a>
+            <h1 class="rv" style="animation-delay:.15s">
+                Ghansham<br>
+                <em>Jadhav</em>
+            </h1>
 
-      <a class="proj" href="https://github.com/sham-jadhav03/Claude-Token-Reducers" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="mono">006</span>
-          <h3>Claude Token Reducers</h3>
-          <span class="arrow">↗</span>
-          <p class="desc">A Claude Code skill that strips boilerplate and hedging out of agent
-            responses for token-efficient sessions. Small tool, real users — my most-starred repo.</p>
-          <div class="stack">
-            <span class="tag">Claude Code</span><span class="tag">Developer tooling</span>
-          </div>
-        </div>
-      </a>
-    </section>
+            <p class="lede rv" style="animation-delay:.3s">
+                I build full-stack applications with a focus on backend systems,
+                AI-powered workflows, and practical system design.
+            </p>
 
-    <section id="skills">
-      <div class="sec-head"><span class="mono">03</span>
-        <h2>Toolkit</h2>
-      </div>
-      <div class="skills">
-        <div class="skill">
-          <h4>Languages</h4>
-          <ul>
-            <li>TypeScript / JavaScript</li>
-            <li>Python</li>
-            <li>Java</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Backend</h4>
-          <ul>
-            <li>Node.js, Express</li>
-            <li>MongoDB, PostgreSQL</li>
-            <li>Redis — Streams &amp; Pub/Sub</li>
-            <li>REST, JWT, RBAC</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>AI &amp; Agents</h4>
-          <ul>
-            <li>LangChain, LangGraph</li>
-            <li>RAG &amp; vector stores</li>
-            <li>Multi-agent systems</li>
-            <li>LangSmith, Langfuse</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Frontend</h4>
-          <ul>
-            <li>React, Next.js</li>
-            <li>Tailwind CSS, Sass</li>
-            <li>HTML5, CSS3, Canvas</li>
-          </ul>
-        </div>
-        <div class="skill">
-          <h4>Infra</h4>
-          <ul>
-            <li>Docker</li>
-            <li>AWS</li>
-            <li>Git &amp; GitHub Actions</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+            <div class="meta mono rv" style="animation-delay:.4s">
+                <span class="avail">
+                    <span class="pulse" aria-hidden="true"></span>
+                    Open to opportunities
+                </span>
 
-    <section id="contact" class="contact">
-      <div class="sec-head" style="justify-content:center;border-top:0;padding-top:0">
-        <span class="mono">04 — Contact</span>
-      </div>
-      <p class="mono" style="margin-bottom:24px">Hiring, collaborating, or just curious?</p>
-      <a class="big" href="mailto:ghanshamjadhav2003@gmail.com">ghanshamjadhav2003@gmail.com</a>
-      <div class="socials mono">
-        <a href="https://github.com/sham-jadhav03" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://x.com/sham_jadhav18" target="_blank" rel="noopener">X / Twitter</a>
-        <a href="https://leetcode.com/u/sham_jadhav03/" target="_blank" rel="noopener">LeetCode</a>
-      </div>
-    </section>
+                <span>India</span>
+            </div>
 
-    <footer class="mono">
-      <span>© 2026 Ghansham Jadhav</span>
-      <span>Built by hand</span>
-    </footer>
-  </main>
+            <div class="hero-actions rv" style="animation-delay:.48s">
+                <!-- Replace resume.pdf with your actual deployed resume path -->
+                <a class="action primary" href="./resume.pdf" target="_blank" rel="noopener">
+                    View Resume ↗
+                </a>
 
-  <script>
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e, i) {
-        if (e.isIntersecting) {
-          e.target.style.animationDelay = (i * 0.07) + 's';
-          e.target.classList.add('rv');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
+                <a class="action" href="https://github.com/sham-jadhav03" target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
 
-    document.querySelectorAll('section > .sec-head, .about > *, .proj, .skill, .contact > *')
-      .forEach(function (el) { el.style.opacity = '0'; io.observe(el); });
-  </script>
+                <a class="action" href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/" target="_blank"
+                    rel="noopener noreferrer">
+                    LinkedIn ↗
+                </a>
+            </div>
+
+        </header>
+
+
+        <!-- ==============================
+         ABOUT
+    =============================== -->
+
+        <section id="about">
+
+            <div class="sec-head">
+                <span class="mono">01</span>
+                <h2>About</h2>
+            </div>
+
+            <div class="about">
+
+                <div>
+                    <p>
+                        I'm a full-stack developer focused on backend systems and
+                        AI-powered applications. I work primarily with TypeScript,
+                        Node.js, React/Next.js and Python, and I enjoy turning complex
+                        workflows into reliable services.
+                    </p>
+
+                    <p>
+                        Recently I've been building RAG and agent systems with LangGraph,
+                        vector databases and asynchronous processing, while continuing
+                        to deepen my systems and distributed-software fundamentals.
+                    </p>
+                </div>
+
+                <dl class="facts">
+
+                    <dt class="mono">Education</dt>
+                    <dd>
+                        B.E. Information Technology · 2023–2027<br>
+                        Government College of Engineering
+                    </dd>
+
+                    <dt class="mono">Current focus</dt>
+                    <dd>
+                        RAG systems · AI agents · Backend architecture
+                    </dd>
+
+                    <dt class="mono">DSA</dt>
+                    <dd>
+                        Java ·
+                        <a href="https://leetcode.com/u/sham_jadhav03/" target="_blank" rel="noopener noreferrer">
+                            LeetCode ↗
+                        </a>
+                    </dd>
+
+                    <dt class="mono">Elsewhere</dt>
+                    <dd>
+                        <a href="https://github.com/sham-jadhav03" target="_blank" rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                        ·
+                        <a href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/" target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                        ·
+                        <a href="https://x.com/sham_jadhav18" target="_blank" rel="noopener noreferrer">
+                            X
+                        </a>
+                    </dd>
+
+                </dl>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         WHAT I BUILD
+    =============================== -->
+
+        <section id="build">
+
+            <div class="sec-head">
+                <span class="mono">02</span>
+                <h2>What I build</h2>
+            </div>
+
+            <div class="build-grid">
+
+                <article class="build-item">
+
+                    <span class="build-number mono">01</span>
+
+                    <h3>AI Applications</h3>
+
+                    <p>
+                        RAG systems, document intelligence, LLM workflows,
+                        and agent-based applications.
+                    </p>
+
+                </article>
+
+                <article class="build-item">
+
+                    <span class="build-number mono">02</span>
+
+                    <h3>Backend Systems</h3>
+
+                    <p>
+                        APIs, authentication, RBAC, Redis-based workflows,
+                        databases, and asynchronous services.
+                    </p>
+
+                </article>
+
+                <article class="build-item">
+
+                    <span class="build-number mono">03</span>
+
+                    <h3>Full-stack Products</h3>
+
+                    <p>
+                        React and Next.js applications backed by real APIs,
+                        persistent data, and production-oriented infrastructure.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         SELECTED WORK
+    =============================== -->
+
+        <section id="work">
+
+            <div class="sec-head">
+                <span class="mono">03</span>
+                <h2>Selected work</h2>
+            </div>
+
+
+            <!-- FEATURED -->
+
+            <p class="project-group-label mono">Featured</p>
+
+
+            <!-- RAG CHATBOT -->
+
+            <article class="proj">
+
+                <div class="row">
+
+                    <span class="mono">001</span>
+
+                    <h3>Enterprise RAG Knowledge Base</h3>
+
+                    <span class="arrow" aria-hidden="true">↗</span>
+
+                    <p class="desc">
+                        An asynchronous enterprise knowledge-base system that turns
+                        PDF documentation into a conversational interface with grounded
+                        answers and verifiable page citations. Node.js handles the API
+                        gateway while a Python AI service performs ingestion and
+                        LangGraph-based retrieval and generation through Redis.
+                    </p>
+
+                    <div class="stack">
+                        <span class="tag live">Live Demo</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">ChromaDB</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+
+                    <div class="links">
+
+                        <a href="https://github.com/sham-jadhav03/RAG-ChatBot" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                        <!-- Replace with your actual live URL -->
+                        <a href="https://your-rag-demo-url.com" target="_blank" rel="noopener noreferrer">
+                            Live Demo ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- RESEARCH AI -->
+
+            <article class="proj">
+
+                <div class="row">
+
+                    <span class="mono">002</span>
+
+                    <h3>ReSearch AI</h3>
+
+                    <span class="arrow" aria-hidden="true">↗</span>
+
+                    <p class="desc">
+                        A full-stack AI answer engine that searches the live web,
+                        streams responses through SSE, and attaches citations to
+                        retrieved sources. Also includes PDF document Q&A,
+                        multimodal queries, and persistent conversation memory.
+                    </p>
+
+                    <div class="stack">
+                        <span class="tag">MERN</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Gemini</span>
+                        <span class="tag">Tavily</span>
+                        <span class="tag">SSE</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+
+                    <div class="links">
+
+                        <a href="https://github.com/sham-jadhav03/ReSearch-AI" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CODEX -->
+
+            <article class="proj">
+
+                <div class="row">
+
+                    <span class="mono">003</span>
+
+                    <h3>Codex — Browser IDE</h3>
+
+                    <span class="arrow" aria-hidden="true">↗</span>
+
+                    <p class="desc">
+                        A browser-based collaborative coding environment with Gemini
+                        code generation and WebContainers for running projects without
+                        a local development setup. Real-time collaboration is handled
+                        through Socket.io with Redis-backed session state.
+                    </p>
+
+                    <div class="stack">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Socket.io</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">WebContainers</span>
+                        <span class="tag">Gemini</span>
+                    </div>
+
+                    <div class="links">
+
+                        <a href="https://github.com/sham-jadhav03/Codex" target="_blank" rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SAAS BACKEND -->
+
+            <article class="proj">
+
+                <div class="row">
+
+                    <span class="mono">004</span>
+
+                    <h3>Multi-Tenant SaaS Backend</h3>
+
+                    <span class="arrow" aria-hidden="true">↗</span>
+
+                    <p class="desc">
+                        A production-style backend architecture with tenant isolation,
+                        JWT-based RBAC, and controller/service/repository separation.
+                        Docker Compose provides environment-specific local and
+                        production configurations.
+                    </p>
+
+                    <div class="stack">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">JWT</span>
+                    </div>
+
+                    <div class="links">
+
+                        <a href="https://github.com/sham-jadhav03/Saas-Backend" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- OTHER WORK -->
+
+            <div class="other-work">
+
+                <p class="project-group-label mono">Other work</p>
+
+
+                <article class="proj">
+
+                    <div class="row">
+
+                        <span class="mono">005</span>
+
+                        <h3>Claude Token Reducers</h3>
+
+                        <span class="arrow" aria-hidden="true">↗</span>
+
+                        <p class="desc">
+                            A Claude Code developer tool focused on reducing unnecessary
+                            boilerplate and hedging in agent responses for more
+                            token-efficient sessions.
+                        </p>
+
+                        <div class="stack">
+                            <span class="tag">Claude Code</span>
+                            <span class="tag">Developer Tooling</span>
+                        </div>
+
+                        <div class="links">
+
+                            <a href="https://github.com/sham-jadhav03/Claude-Token-Reducers" target="_blank"
+                                rel="noopener noreferrer">
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="proj">
+
+                    <div class="row">
+
+                        <span class="mono">006</span>
+
+                        <h3>Canvas Image Editor</h3>
+
+                        <span class="arrow" aria-hidden="true">↗</span>
+
+                        <p class="desc">
+                            A browser-based image processing application built with the
+                            Canvas API, including cinematic presets, optimization tools,
+                            and video recording without external frameworks.
+                        </p>
+
+                        <div class="stack">
+                            <span class="tag live">Live</span>
+                            <span class="tag">Canvas API</span>
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+
+                        <div class="links">
+
+                            <a href="https://github.com/sham-jadhav03/Image-Editor" target="_blank"
+                                rel="noopener noreferrer">
+                                GitHub ↗
+                            </a>
+
+                            <a href="https://sham-jadhav03.github.io/Image-Editor/" target="_blank"
+                                rel="noopener noreferrer">
+                                Live Demo ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         TOOLKIT
+    =============================== -->
+
+        <section id="skills">
+
+            <div class="sec-head">
+                <span class="mono">04</span>
+                <h2>Toolkit</h2>
+            </div>
+
+            <div class="skills">
+
+                <div class="skill">
+                    <h4>Languages</h4>
+
+                    <ul>
+                        <li>TypeScript / JavaScript</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+
+                <div class="skill">
+                    <h4>Frontend</h4>
+
+                    <ul>
+                        <li>React / Next.js</li>
+                        <li>Tailwind CSS</li>
+                        <li>HTML5 / CSS3</li>
+                        <li>Canvas API</li>
+                    </ul>
+                </div>
+
+
+                <div class="skill">
+                    <h4>Backend</h4>
+
+                    <ul>
+                        <li>Node.js / Express</li>
+                        <li>REST APIs</li>
+                        <li>JWT / RBAC</li>
+                        <li>WebSockets / Socket.io</li>
+                    </ul>
+                </div>
+
+
+                <div class="skill">
+                    <h4>Data & Infrastructure</h4>
+
+                    <ul>
+                        <li>MongoDB / PostgreSQL</li>
+                        <li>Redis</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                    </ul>
+                </div>
+
+
+                <div class="skill">
+                    <h4>AI Engineering</h4>
+
+                    <ul>
+                        <li>LangChain / LangGraph</li>
+                        <li>RAG / Vector Stores</li>
+                        <li>Multi-Agent Systems</li>
+                        <li>LangSmith / Langfuse</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         BEYOND CODE
+    =============================== -->
+
+        <section id="beyond">
+
+            <div class="sec-head">
+                <span class="mono">05</span>
+                <h2>Beyond code</h2>
+            </div>
+
+            <div class="beyond">
+
+                <article class="beyond-item">
+
+                    <span class="mono">Leadership</span>
+
+                    <h3>Co-Head · HackSlash Coding Club</h3>
+
+                    <p>
+                        Helped lead a 15-member coding club and organized a
+                        national-level hackathon with 100+ participants.
+                    </p>
+
+                </article>
+
+
+                <article class="beyond-item">
+
+                    <span class="mono">Certification</span>
+
+                    <h3>Oracle Certified Generative AI Professional</h3>
+
+                    <p>
+                        Oracle University · 2025–2027
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         CONTACT
+    =============================== -->
+
+        <section id="contact" class="contact">
+
+            <div class="sec-head" style="justify-content:center;border-top:0;padding-top:0">
+                <span class="mono">06 — Contact</span>
+            </div>
+
+            <p class="mono" style="margin-bottom:24px">
+                Hiring, collaborating, or just curious?
+            </p>
+
+            <a class="big" href="mailto:ghanshamjadhav2003@gmail.com">
+                ghanshamjadhav2003@gmail.com
+            </a>
+
+            <div class="socials mono">
+
+                <a href="https://github.com/sham-jadhav03" target="_blank" rel="noopener noreferrer">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/" target="_blank"
+                    rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+
+                <a href="https://x.com/sham_jadhav18" target="_blank" rel="noopener noreferrer">
+                    X / Twitter
+                </a>
+
+                <a href="https://leetcode.com/u/sham_jadhav03/" target="_blank" rel="noopener noreferrer">
+                    LeetCode
+                </a>
+
+                <a href="./resume.pdf">
+                    Resume
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+         FOOTER
+    =============================== -->
+
+        <footer class="mono">
+
+            <span>© 2026 Ghansham Jadhav</span>
+
+            <span>Built by hand</span>
+
+        </footer>
+
+    </main>
+
+
+    <script>
+        const observer = new IntersectionObserver(
+            (entries, observerInstance) => {
+                entries.forEach((entry, index) => {
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.style.animationDelay = `${index * 0.07}s`;
+                    entry.target.classList.add("rv");
+
+                    observerInstance.unobserve(entry.target);
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: "0px 0px -6% 0px"
+            }
+        );
+
+        document
+            .querySelectorAll(
+                "section > .sec-head, .about > *, .build-item, .proj, .skill, .beyond-item, .contact > *"
+            )
+            .forEach((element) => {
+                element.style.opacity = "0";
+                observer.observe(element);
+            });
+    </script>
+
 </body>
 
 </html>
