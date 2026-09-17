@@ -108,7 +108,7 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   padding: 28px 0;
   border-right: 1px solid var(--rule);
@@ -118,12 +118,13 @@ a:focus-visible {
   font-family: "Instrument Serif", serif;
   font-size: 1.4rem;
   line-height: 1;
+  position: absolute;
+  top: 28px;
 }
 
 .rail .vert {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  margin: auto 0;
 }
 
 .rail .vert a {
@@ -141,6 +142,8 @@ a:focus-visible {
 
 .rail .dot {
   display: block;
+  position: absolute;
+  bottom: 28px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -966,6 +969,7 @@ section {
   display: flex;
   gap: 10px;
   align-items: baseline;
+  color: var(--ink);
 }
 
 .skill li::before {
