@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "skills",
+      "name": "ghansham-portfolio",
       "dependencies": {
         "react": "^19.2.8",
         "react-dom": "^19.2.8",

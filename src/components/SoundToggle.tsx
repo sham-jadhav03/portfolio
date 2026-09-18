@@ -20,6 +20,9 @@ export default function SoundToggle() {
   }, [enabled]);
 
   useEffect(() => {
+    // NOTE: intentionally listens on "mouseover" — the blip plays on hover
+    // over interactive elements, not on click. Changing this to "click"
+    // would change the behavior (and the aria-label) of the feature.
     function onClick(e: MouseEvent) {
       if (!enabledRef.current) return;
 

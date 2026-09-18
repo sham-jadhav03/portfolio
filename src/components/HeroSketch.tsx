@@ -36,6 +36,7 @@ export default function HeroSketch() {
     let particles: Particle[] = [];
     let visible = false;
     let running = false;
+    let paused = false;
     const mouse = { x: -9999, y: -9999, active: false };
     let energy = 0;
 
@@ -54,7 +55,7 @@ export default function HeroSketch() {
 
     function seed() {
       const count = Math.min(
-        120,
+        90,
         Math.max(30, Math.round((width * height) / 1300)),
       );
       particles = Array.from({ length: count }, () => ({
@@ -136,7 +137,7 @@ export default function HeroSketch() {
     }
 
     function step() {
-      if (!visible) {
+      if (!visible || paused) {
         running = false;
         return;
       }
@@ -194,6 +195,22 @@ export default function HeroSketch() {
       if (reduced) drawFrame();
     }
 
+    // Pause the animation loop while the hero is scrolled off screen
+    let visibilityObserver: IntersectionObserver | null = null;
+    if (!reduced && "IntersectionObserver" in window) {
+      visibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            paused = false;
+            start();
+          } else {
+            paused = true;
+          }
+        });
+      });
+      visibilityObserver.observe(canvas);
+    }
+
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerleave", onPointerLeave);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -201,6 +218,7 @@ export default function HeroSketch() {
 
     return () => {
       running = false;
+      visibilityObserver?.disconnect();
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("scroll", onScroll);

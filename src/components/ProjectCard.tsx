@@ -16,6 +16,8 @@ interface ProjectCardProps {
   href: string;
   placeholder?: string;
   desc: string;
+  impact?: string;
+  year?: string;
   srOnly: string;
   tags: ProjectTag[];
   links: ProjectLink[];
@@ -29,6 +31,8 @@ export default function ProjectCard({
   href,
   placeholder,
   desc,
+  impact,
+  year,
   srOnly,
   tags,
   links,
@@ -45,7 +49,10 @@ export default function ProjectCard({
       data-term={term}
     >
       <div className="row">
-        <span className="mono">{term}</span>
+        <span className="mono">
+          {term}
+          {year && <span className="proj-year">{year}</span>}
+        </span>
 
         <h3>
           <a href={href} target="_blank" rel="noopener noreferrer">
@@ -66,6 +73,8 @@ export default function ProjectCard({
         )}
 
         <p className="desc">{desc}</p>
+
+        {impact && <p className="impact mono">{impact}</p>}
 
         <div className="proj-term" aria-hidden="true">
           <pre>

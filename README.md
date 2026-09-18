@@ -1,75 +1,54 @@
-# React + TypeScript + Vite
+# Ghansham Jadhav — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Ghansham Jadhav**, full-stack developer focused on backend
+systems, AI-powered applications, and practical system design.
 
-Currently, two official plugins are available:
+Live: **https://shyam.pages.dev/**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- React 19 + TypeScript
+- Vite (build + dev server)
+- Hand-rolled CSS (no UI framework)
+- Deployed on Cloudflare Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What's inside
 
-## Expanding the ESLint configuration
+Single-page editorial layout with fixed rail navigation and scrollspy:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Hero** — kinetic headings, particle-sketch canvas, resume/social actions
+- **About** — background, education, current focus
+- **What I build** — areas of work
+- **Selected work** — featured + other projects with visible impact metrics
+  and hover terminal snippets
+- **Toolkit** — skills grouped by domain
+- **Beyond code** — leadership & certifications
+- **Contact** — email + socials
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Details: scroll progress indicator, dark mode via `prefers-color-scheme`,
+optional sound toggle, `prefers-reduced-motion` support, keyboard-accessible
+project cards, SEO/OG/JSON-LD metadata.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# install (bun.lock is the lockfile; npm works too)
+bun install
 
+# dev server
+bun run dev
+
+# lint
+bun run lint
+
+# production build (tsc + vite)
+bun run build
+
+# preview the production build
+bun run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Static build output in `dist/`, deployed to Cloudflare Pages at
+`https://shyam.pages.dev/`. CI (lint + build) runs via GitHub Actions.

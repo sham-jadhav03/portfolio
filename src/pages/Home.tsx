@@ -1,5 +1,6 @@
 import KineticHeading from "../components/KineticHeading";
 import HeroSketch from "../components/HeroSketch";
+import { GITHUB_URL, LINKEDIN_URL, RESUME_URL } from "../data/profile";
 
 export default function Home() {
   return (
@@ -27,13 +28,15 @@ export default function Home() {
           Open to opportunities
         </span>
 
+        <span>B.E. IT ’27</span>
+
         <span>India</span>
       </div>
 
       <div className="hero-actions rv" style={{ animationDelay: ".48s" }}>
         <a
           className="action primary"
-          href="https://drive.google.com/file/d/18y-cZOYryTsP7FNcVyawukvgi9ru6eaM/view"
+          href={RESUME_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -42,7 +45,7 @@ export default function Home() {
 
         <a
           className="action"
-          href="https://github.com/sham-jadhav03"
+          href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -51,13 +54,17 @@ export default function Home() {
 
         <a
           className="action"
-          href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/"
+          href={LINKEDIN_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
           LinkedIn ↗
         </a>
       </div>
+
+      <p className="currently mono rv" style={{ animationDelay: ".56s" }}>
+        Currently — building RAG & agent systems with LangGraph
+      </p>
 
       <HeroSketch />
     </header>

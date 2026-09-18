@@ -5,6 +5,7 @@ import ProjectCard, {
   type ProjectTag,
 } from "../components/ProjectCard";
 import { useReveal } from "../lib/motion";
+import { GITHUB_URL } from "../data/profile";
 
 interface ProjectData {
   term: string;
@@ -12,6 +13,8 @@ interface ProjectData {
   href: string;
   placeholder?: string;
   desc: string;
+  impact?: string;
+  year?: string;
   srOnly: string;
   tags: ProjectTag[];
   links: ProjectLink[];
@@ -26,6 +29,8 @@ const FEATURED: ProjectData[] = [
     href: "https://rag-chat-bot-rho.vercel.app",
     placeholder: "RAG Pipeline",
     desc: "An asynchronous enterprise knowledge-base system that turns PDF documentation into a conversational interface with grounded answers and verifiable page citations. Node.js handles the API gateway while a Python AI service performs ingestion and LangGraph-based retrieval and generation through Redis.",
+    impact: "3 tenants · 42 docs indexed · 1.4s latency",
+    year: "2026",
     srOnly:
       "Supports 3 tenants with 42 indexed documents. Grounded answers include page citations, such as page 12 with citations 12 and 14, and a 1.4 second latency.",
     tags: [
@@ -55,6 +60,8 @@ const FEATURED: ProjectData[] = [
     href: "https://github.com/sham-jadhav03/ReSearch-AI",
     placeholder: "Search + Stream",
     desc: "A full-stack AI answer engine that searches the live web, streams responses through SSE, and attaches citations to retrieved sources. Includes PDF document Q&A, multimodal queries, and persistent conversation memory.",
+    impact: "Live web search · SSE streaming · source citations",
+    year: "2026",
     srOnly:
       "Streams live web-search answers over SSE in 6 data chunks with citations attached, including arxiv sources.",
     tags: [
@@ -79,6 +86,8 @@ const FEATURED: ProjectData[] = [
     href: "https://github.com/sham-jadhav03/Codex",
     placeholder: "Collaborative IDE",
     desc: "A browser-based collaborative coding environment with Gemini code generation and WebContainers for running projects without a local setup. Real-time collaboration through Socket.io with Redis-backed session state.",
+    impact: "Real-time IDE sessions · 128 MB WebContainer sandboxes",
+    year: "2025",
     srOnly:
       "Real-time collaborative IDE sessions via Socket.io with Redis-backed state, running in 128 MB WebContainer sandboxes.",
     tags: [
@@ -103,6 +112,8 @@ const FEATURED: ProjectData[] = [
     href: "https://github.com/sham-jadhav03/Saas-Backend",
     placeholder: "System Architecture",
     desc: "A production-style backend architecture with tenant isolation, JWT-based RBAC, and controller/service/repository separation. Docker Compose provides environment-specific local and production configurations.",
+    impact: "Tenant isolation · JWT / RBAC · Docker Compose environments",
+    year: "2026",
     srOnly:
       "Docker Compose backend with a JWT-issued API, RBAC admin access, and an authentication-enabled MongoDB replica set.",
     tags: [
@@ -128,6 +139,8 @@ const OTHER: ProjectData[] = [
     title: "Claude Token Reducers",
     href: "https://github.com/sham-jadhav03/Claude-Token-Reducers",
     desc: "A Claude Code developer tool focused on reducing unnecessary boilerplate and hedging in agent responses for more token-efficient sessions.",
+    impact: "22,940 → 14,208 tokens per session",
+    year: "2026",
     srOnly:
       "Trims boilerplate across 12 files and reduces token usage from 22,940 to 14,208 per session.",
     tags: [{ label: "Claude Code" }, { label: "Developer Tooling" }],
@@ -143,6 +156,8 @@ const OTHER: ProjectData[] = [
     title: "Canvas Image Editor",
     href: "https://sham-jadhav03.github.io/Image-Editor/",
     desc: "A browser-based image processing application built with the Canvas API, including cinematic presets, optimization tools, and video recording without external frameworks.",
+    impact: "1200 × 800 canvas · 214 KB WebP export",
+    year: "2026",
     srOnly:
       "Canvas rendering at 1200 by 800 with a cinematic preset; noise-reduced output exported as WebP at 214 KB.",
     tags: [
@@ -185,6 +200,8 @@ export default function Works() {
           href={project.href}
           placeholder={project.placeholder}
           desc={project.desc}
+          impact={project.impact}
+          year={project.year}
           srOnly={project.srOnly}
           tags={project.tags}
           links={project.links}
@@ -203,11 +220,24 @@ export default function Works() {
             title={project.title}
             href={project.href}
             desc={project.desc}
+            impact={project.impact}
+            year={project.year}
             srOnly={project.srOnly}
             tags={project.tags}
             links={project.links}
           />
         ))}
+      </div>
+
+      <div className="more-work">
+        <a
+          className="mono"
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          More on GitHub →
+        </a>
       </div>
     </section>
   );

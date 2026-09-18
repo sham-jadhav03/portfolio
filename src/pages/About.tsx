@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import KineticHeading from "../components/KineticHeading";
 import { useReveal } from "../lib/motion";
+import { GITHUB_URL, LEETCODE_URL, LINKEDIN_URL, X_URL } from "../data/profile";
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -44,38 +45,22 @@ export default function About() {
           <dt className="mono">DSA</dt>
           <dd>
             Java ·{" "}
-            <a
-              href="https://leetcode.com/u/sham_jadhav03/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer">
               LeetCode ↗
             </a>
           </dd>
 
           <dt className="mono">Elsewhere</dt>
           <dd>
-            <a
-              href="https://github.com/sham-jadhav03"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>{" "}
             ·{" "}
-            <a
-              href="https://www.linkedin.com/in/ghansham-jadhav-98112128a/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>{" "}
             ·{" "}
-            <a
-              href="https://x.com/sham_jadhav18"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={X_URL} target="_blank" rel="noopener noreferrer">
               X
             </a>
           </dd>

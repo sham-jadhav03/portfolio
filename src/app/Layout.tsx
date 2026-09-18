@@ -31,9 +31,19 @@ export default function Layout({ children }: LayoutProps) {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
     const railEl = railRef.current;
     if (!railEl) return;
     const rail: HTMLElement = railEl;
+    let ticking = false;
 
     function updateScrollProgress() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -43,9 +53,18 @@ export default function Layout({ children }: LayoutProps) {
       rail.style.setProperty("--scroll-progress", `${progress.toFixed(1)}%`);
     }
 
-    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     updateScrollProgress();
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -85,11 +104,18 @@ export default function Layout({ children }: LayoutProps) {
       { threshold: 0.15, rootMargin: "-20% 0px -50% 0px" },
     );
 
+    let ticking = false;
+
     function onScroll() {
-      const atBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 8;
-      if (atBottom) setActive("contact");
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const atBottom =
+          window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 8;
+        if (atBottom) setActive("contact");
+      });
     }
 
     sections.forEach((section) => spy.observe(section));
@@ -102,6 +128,10 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
+      <a href="#main" className="skip-link mono">
+        Skip to content
+      </a>
+
       <nav className="mobile-nav" aria-label="Mobile navigation">
         <span className="mobile-mark">GJ</span>
 
@@ -147,7 +177,7 @@ export default function Layout({ children }: LayoutProps) {
         <a className="dot" href="#contact" aria-label="Go to contact section" />
       </nav>
 
-      <main className="wrap">
+      <main className="wrap" id="main">
         {children}
 
         <footer className="mono">
