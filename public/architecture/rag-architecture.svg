@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif">
+<defs>
+  <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#8A857A"/></marker>
+  <marker id="o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#B3451F"/></marker>
+</defs>
+<rect width="800" height="400" fill="#1A1A17"/>
+
+<!-- zone containers -->
+<g fill="#FFFFFF" stroke="#3A3A36" stroke-width="1">
+  <rect x="10" y="28" width="145" height="252" rx="8"/>
+  <rect x="163" y="28" width="400" height="252" rx="8"/>
+  <rect x="571" y="28" width="219" height="252" rx="8"/>
+  <rect x="10" y="296" width="780" height="90" rx="8"/>
+</g>
+<g fill="#8A857A" font-size="9" letter-spacing="1" font-weight="600">
+  <text x="20" y="42">CLIENT</text>
+  <text x="173" y="42">NODE API GATEWAY</text>
+  <text x="581" y="42">AI PROCESSING</text>
+  <text x="20" y="310">MESSAGING / DATA</text>
+</g>
+
+<!-- ===== CONNECTORS (behind nodes) ===== -->
+
+<!-- client internal -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M42,72 V95 H80 V108"/>
+  <path d="M118,72 V95 H80 V108"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.4" marker-end="url(#o)" marker-start="url(#o)">
+  <path d="M80,136 V158"/>
+</g>
+
+<!-- API Client -> gateway APIs -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M135,166 H150 V68 H175"/>
+  <path d="M135,178 H160 V68 H425"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.5" marker-end="url(#o)" marker-start="url(#o)">
+  <path d="M135,172 H155 V68 H300"/>
+</g>
+
+<!-- api -> service -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M232,81 V95"/>
+  <path d="M482,81 V95"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.4" marker-end="url(#o)">
+  <path d="M357,81 V95"/>
+</g>
+
+<!-- service -> support row -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M232,121 V135"/>
+  <path d="M315,135 V121 H350"/>
+  <path d="M371,149 H363"/>
+  <path d="M475,121 V131 H522 V135"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.6" marker-end="url(#o)">
+  <path d="M357,121 V128 H510 V135"/>
+</g>
+
+<!-- gateway -> storage (secondary) -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M232,121 V300 H90 V318"/>
+  <path d="M482,121 V300 H230 V325"/>
+</g>
+
+<!-- gateway <-> Redis Messaging (boundary lead-ins) -->
+<g fill="none" stroke="#B3451F" stroke-width="1.6" marker-end="url(#o)">
+  <path d="M516,163 V300 H485 V322"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.6" marker-end="url(#o)">
+  <path d="M445,322 V300 H418 V163"/>
+</g>
+
+<!-- AI internal -->
+<g fill="none" stroke="#8A857A" stroke-width="1" marker-end="url(#g)">
+  <path d="M645,83 V100"/>
+  <path d="M705,83 V100"/>
+  <path d="M625,126 V140"/>
+  <path d="M655,166 V300 H622 V318"/>
+</g>
+<g fill="none" stroke="#B3451F" stroke-width="1.6" marker-end="url(#o)">
+  <path d="M710,126 V300 H622 V318"/>
+  <path d="M745,126 V325"/>
+</g>
+
+<!-- CRITICAL: Redis Messaging <-> Redis AI Worker (Redis is the ONLY bridge) -->
+<g fill="none" stroke="#B3451F" stroke-width="2.1" marker-end="url(#o)" marker-start="url(#o)">
+  <path d="M485,322 V286 H670 V83"/>
+</g>
+<text x="540" y="280" fill="#B3451F" font-size="7.5" font-weight="600">pub / sub only</text>
+
+<!-- ===== ZONE NODES ===== -->
+
+<!-- Client -->
+<circle cx="42" cy="58" r="14" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.2"/>
+<text x="42" y="61" text-anchor="middle" fill="#1A1A17" font-size="8">Admin</text>
+<circle cx="118" cy="58" r="14" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.2"/>
+<text x="118" y="61" text-anchor="middle" fill="#1A1A17" font-size="8">Employee</text>
+<rect x="25" y="108" width="110" height="28" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.2"/>
+<text x="80" y="126" text-anchor="middle" fill="#1A1A17" font-size="10">Web App</text>
+<rect x="25" y="158" width="110" height="28" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.2"/>
+<text x="80" y="176" text-anchor="middle" fill="#1A1A17" font-size="10">API Client</text>
+
+<!-- Gateway row1: APIs -->
+<g fill="#FFFFFF" stroke="#B3451F" stroke-width="1.1">
+  <rect x="175" y="55" width="115" height="26" rx="5"/>
+  <rect x="300" y="55" width="115" height="26" rx="5"/>
+  <rect x="425" y="55" width="115" height="26" rx="5"/>
+</g>
+<g fill="#1A1A17" font-size="9.5" text-anchor="middle">
+  <text x="232" y="72">Auth API</text>
+  <text x="357" y="72">Chat API</text>
+  <text x="482" y="72">Document API</text>
+</g>
+
+<!-- Gateway row2: Services -->
+<g fill="#FFFFFF" stroke="#B3451F" stroke-width="1.1">
+  <rect x="175" y="95" width="115" height="26" rx="5"/>
+  <rect x="300" y="95" width="115" height="26" rx="5"/>
+  <rect x="425" y="95" width="115" height="26" rx="5"/>
+</g>
+<g fill="#1A1A17" font-size="9.5" text-anchor="middle">
+  <text x="232" y="112">Auth Service</text>
+  <text x="357" y="112">Chat Service</text>
+  <text x="482" y="112">Document Service</text>
+</g>
+
+<!-- Gateway row3: support -->
+<g fill="#FFFFFF" stroke="#B3451F" stroke-width="1.1">
+  <rect x="175" y="135" width="85" height="28" rx="5"/>
+  <rect x="268" y="135" width="95" height="28" rx="5"/>
+  <rect x="371" y="135" width="95" height="28" rx="5"/>
+  <rect x="474" y="135" width="85" height="28" rx="5"/>
+</g>
+<g fill="#1A1A17" font-size="8" text-anchor="middle">
+  <text x="217" y="153">Auth Guard</text>
+  <text x="315" y="147">Request</text>
+  <text x="315" y="157">Correlator</text>
+  <text x="418" y="147">Response</text>
+  <text x="418" y="157">Subscriber</text>
+  <text x="516" y="147">Redis</text>
+  <text x="516" y="157">Publisher</text>
+</g>
+
+<!-- AI Processing -->
+<rect x="590" y="55" width="160" height="28" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="670" y="73" text-anchor="middle" fill="#1A1A17" font-size="9.5">Redis AI Worker</text>
+
+<rect x="580" y="100" width="90" height="26" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="625" y="117" text-anchor="middle" fill="#1A1A17" font-size="8.5">PDF Ingestion</text>
+<rect x="680" y="100" width="90" height="26" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="725" y="117" text-anchor="middle" fill="#1A1A17" font-size="8.5">RAG Graph</text>
+
+<rect x="580" y="140" width="150" height="26" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="655" y="157" text-anchor="middle" fill="#1A1A17" font-size="8.5">Embedding Engine</text>
+
+<!-- Bottom strip: messaging + data -->
+<g stroke="#3A3A36" stroke-width="1.1">
+  <ellipse cx="90" cy="325" rx="52" ry="7" fill="#FFFFFF"/>
+  <path d="M38,325 v20 a52,7 0 0 0 104,0 v-20" fill="#FFFFFF"/>
+  <ellipse cx="90" cy="345" rx="52" ry="7" fill="#FFFFFF"/>
+</g>
+<text x="90" y="339" text-anchor="middle" fill="#1A1A17" font-size="8.5">MongoDB Atlas</text>
+
+<rect x="175" y="325" width="110" height="28" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="230" y="343" text-anchor="middle" fill="#1A1A17" font-size="8.5">ImageKit Storage</text>
+
+<rect x="430" y="322" width="110" height="32" rx="5" fill="#FFFFFF" stroke="#B3451F" stroke-width="1.4"/>
+<text x="485" y="342" text-anchor="middle" fill="#1A1A17" font-size="9.5" font-weight="600">Redis Messaging</text>
+
+<g stroke="#3A3A36" stroke-width="1.1">
+  <ellipse cx="622" cy="325" rx="52" ry="7" fill="#FFFFFF"/>
+  <path d="M570,325 v20 a52,7 0 0 0 104,0 v-20" fill="#FFFFFF"/>
+  <ellipse cx="622" cy="345" rx="52" ry="7" fill="#FFFFFF"/>
+</g>
+<text x="622" y="339" text-anchor="middle" fill="#1A1A17" font-size="8.5">ChromaDB Vectors</text>
+
+<rect x="700" y="325" width="90" height="28" rx="5" fill="#FFFFFF" stroke="#3A3A36" stroke-width="1.1"/>
+<text x="745" y="343" text-anchor="middle" fill="#1A1A17" font-size="8.5">Chat LLM</text>
+
+</svg>

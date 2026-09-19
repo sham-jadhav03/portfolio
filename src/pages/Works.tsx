@@ -12,6 +12,7 @@ interface ProjectData {
   title: string;
   href: string;
   placeholder?: string;
+  image?:string;
   desc: string;
   impact?: string;
   year?: string;
@@ -27,7 +28,7 @@ const FEATURED: ProjectData[] = [
     term: "001",
     title: "Enterprise RAG Knowledge Base",
     href: "https://rag-chat-bot-rho.vercel.app",
-    placeholder: "RAG Pipeline",
+    image: "/architecture/rag-architecture.svg",
     desc: "An asynchronous enterprise knowledge-base system that turns PDF documentation into a conversational interface with grounded answers and verifiable page citations. Node.js handles the API gateway while a Python AI service performs ingestion and LangGraph-based retrieval and generation through Redis.",
     impact: "3 tenants · 42 docs indexed · 1.4s latency",
     year: "2026",
@@ -58,7 +59,7 @@ const FEATURED: ProjectData[] = [
     term: "002",
     title: "ReSearch AI",
     href: "https://github.com/sham-jadhav03/ReSearch-AI",
-    placeholder: "Search + Stream",
+    image: "/architecture/research-ai.svg",
     desc: "A full-stack AI answer engine that searches the live web, streams responses through SSE, and attaches citations to retrieved sources. Includes PDF document Q&A, multimodal queries, and persistent conversation memory.",
     impact: "Live web search · SSE streaming · source citations",
     year: "2026",
@@ -84,7 +85,7 @@ const FEATURED: ProjectData[] = [
     term: "003",
     title: "Codex — Browser IDE",
     href: "https://github.com/sham-jadhav03/Codex",
-    placeholder: "Collaborative IDE",
+    image: "/architecture/codex_architecture.png",
     desc: "A browser-based collaborative coding environment with Gemini code generation and WebContainers for running projects without a local setup. Real-time collaboration through Socket.io with Redis-backed session state.",
     impact: "Real-time IDE sessions · 128 MB WebContainer sandboxes",
     year: "2025",
@@ -199,6 +200,7 @@ export default function Works() {
           title={project.title}
           href={project.href}
           placeholder={project.placeholder}
+          image={project.image}
           desc={project.desc}
           impact={project.impact}
           year={project.year}

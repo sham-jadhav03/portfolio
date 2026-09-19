@@ -15,6 +15,7 @@ interface ProjectCardProps {
   title: string;
   href: string;
   placeholder?: string;
+  image?: string;
   desc: string;
   impact?: string;
   year?: string;
@@ -30,6 +31,7 @@ export default function ProjectCard({
   title,
   href,
   placeholder,
+  image,
   desc,
   impact,
   year,
@@ -43,9 +45,8 @@ export default function ProjectCard({
 
   return (
     <article
-      className={`proj${featured ? " proj--featured" : ""}${
-        flagship ? " proj--flagship" : ""
-      }`}
+      className={`proj${featured ? " proj--featured" : ""}${flagship ? " proj--flagship" : ""
+        }`}
       data-term={term}
     >
       <div className="row">
@@ -64,13 +65,21 @@ export default function ProjectCard({
           ↗
         </span>
 
-        {placeholder && (
+        {image ? (
+          <div className="proj-visual">
+            <img
+              src={image}
+              alt={`${title} system architecture`}
+              loading="lazy"
+            />
+          </div>
+        ) : placeholder ? (
           <div className="proj-visual">
             <div className="proj-visual-placeholder" aria-hidden="true">
               <span className="mono">{placeholder}</span>
             </div>
           </div>
-        )}
+        ) : null}
 
         <p className="desc">{desc}</p>
 
