@@ -12,7 +12,7 @@ export default function Home() {
       <KineticHeading as="h1" instant>
         <>
           Ghansham<br />
-          <em>Jadhav</em>
+          <em><span className="j-upright">J</span>adhav</em>
         </>
       </KineticHeading>
 

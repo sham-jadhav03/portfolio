@@ -474,6 +474,13 @@ h1 em {
   color: var(--accent);
 }
 
+h1 em .j-upright {
+  font-style: normal;
+  font-size: 1.08em;
+  letter-spacing: -0.01em;
+  margin-right: -0.02em;
+}
+
 .lede {
   max-width: 42ch;
   margin-top: 34px;
