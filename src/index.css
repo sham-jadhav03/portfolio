@@ -94,54 +94,60 @@ a:focus-visible {
 }
 
 /* ------------------------------
-       Fixed desktop navigation
+       Fixed desktop navigation (top bar)
     ------------------------------ */
 
 .rail {
   position: fixed;
-  left: 26px;
   top: 0;
-  height: 100vh;
-  width: 82px;
+  left: 0;
+  right: 0;
+  height: 64px;
   z-index: 8;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 28px 0;
-  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
 }
 
 .rail::after {
   content: "";
   position: absolute;
-  right: -1px;
-  top: 0;
-  width: 2px;
-  height: var(--scroll-progress, 0%);
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: var(--scroll-progress, 0%);
   background: var(--accent);
   pointer-events: none;
-  transition: height 0.08s ease-out;
+  transition: width 0.08s ease-out;
+}
+
+.rail-inner {
+  max-width: 1080px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+
+  display: flex;
+  align-items: center;
 }
 
 .rail .mark {
   font-family: "Instrument Serif", serif;
   font-size: 1.4rem;
   line-height: 1;
-  position: absolute;
-  top: 28px;
+  flex-shrink: 0;
 }
 
 .rail .vert {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.6vw, 30px);
+  margin-left: auto;
 }
 
 .rail .vert a {
   display: block;
-  margin: 14px 0;
+  padding: 6px 2px;
   transition:
     color 0.25s,
     opacity 0.25s,
@@ -149,7 +155,7 @@ a:focus-visible {
 }
 
 .rail .vert a:hover {
-  transform: translateX(-3px);
+  transform: translateY(-2px);
   color: var(--accent);
 }
 
@@ -159,11 +165,11 @@ a:focus-visible {
 
 .rail .dot {
   display: block;
-  position: absolute;
-  bottom: 28px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: clamp(10px, 1.6vw, 20px);
   background: var(--accent);
   box-shadow: 0 0 0 0 rgba(179, 69, 31, 0.35);
   transition:
@@ -186,7 +192,7 @@ a:focus-visible {
 
 @media (min-width: 901px) {
   .wrap {
-    padding-left: 120px;
+    padding-top: 64px;
   }
 }
 

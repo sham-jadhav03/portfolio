@@ -3,7 +3,7 @@
 Personal portfolio of **Ghansham Jadhav**, full-stack developer focused on backend
 systems, AI-powered applications, and practical system design.
 
-Live: **https://shyam.pages.dev/**
+Live: **https://portfolio.shamdev.workers.dev/**
 
 ## Stack
 

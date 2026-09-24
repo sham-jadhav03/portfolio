@@ -164,17 +164,19 @@ export default function Layout({ children }: LayoutProps) {
       </nav>
 
       <nav className="rail" ref={railRef} aria-label="Primary navigation">
-        <span className="mark">GJ</span>
+        <div className="rail-inner">
+          <span className="mark">GJ</span>
 
-        <div className="vert mono">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
+          <div className="vert mono">
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <a className="dot" href="#contact" aria-label="Go to contact section" />
         </div>
-
-        <a className="dot" href="#contact" aria-label="Go to contact section" />
       </nav>
 
       <main className="wrap" id="main">
